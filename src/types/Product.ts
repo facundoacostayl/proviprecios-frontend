@@ -1,7 +1,7 @@
 export interface Product {
   id: number;
   name: string;
-  brand: string;
+  brandId: string;
   price: number;
   costPrice: number;
   withIva: boolean;

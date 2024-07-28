@@ -1,9 +1,14 @@
+import { useParams } from "react-router-dom";
 import { ProductsTable } from "../components/products/ProductsTable";
 import productService from "../services/Products";
 import { useQuery } from "react-query";
 
 export const Products = () => {
-  const { data } = useQuery("products", () => productService.findProducts());
+  const { brandId } = useParams();
+
+  const { data } = useQuery("products", () =>
+    productService.findProductsByBrandId(brandId!)
+  );
 
   return (
     <div className="bg-white p-8 rounded-md w-full">
@@ -36,7 +41,7 @@ export const Products = () => {
         </div>
       </div>
       <div>
-        <ProductsTable data={data!}></ProductsTable>
+        <ProductsTable productsData={data!} brandId={brandId!}></ProductsTable>
       </div>
       <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
         <span className="text-xs xs:text-sm text-gray-900">
