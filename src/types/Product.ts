@@ -6,4 +6,5 @@ export interface Product {
   costPrice: number;
   withIva: boolean;
   percentageOfGain: number;
+  discount: number;
 }
