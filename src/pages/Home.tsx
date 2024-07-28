@@ -12,21 +12,21 @@ export const Home = () => {
           <h2 className="mb-2 text-2xl font-light text-black sm:text-4xl sm:leading-tight">
             Update your product's prices in one place.{" "}
           </h2>
-          <p className="font-light">Powered by Proviamo Almacen Gourmet.</p>
+          <p className="font-light">Powered by Facundo Acosta :)</p>
         </div>
 
         <div className="grid items-center max-w-4xl grid-cols-2 gap-4 mx-auto mt-12 md:mt-20 md:grid-cols-4">
           {data?.map(({ id, name, imageUrl }) => (
             <Link to={`/products/brand/${id}`}>
-              <div className="bg-white hover:bg-gray-100 h-12 flex shadow-lg items-center justify-center ease-in duration-100">
+              <div className="bg-white hover:bg-gray-100 h-20 flex shadow-lg items-center justify-center ease-in duration-100">
                 {imageUrl ? (
                   <img
-                    className="object-contain w-full h-6 mx-auto"
+                    className="object-contain w-full h-20 mx-auto"
                     src={imageUrl}
                     alt={name}
                   />
                 ) : (
-                  <p>{name}</p>
+                  <p className="font-semibold text-xl text-gray-600">{name}</p>
                 )}
               </div>
             </Link>
