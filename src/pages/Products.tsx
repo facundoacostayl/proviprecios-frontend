@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { ProductService } from "../services/Products";
-
-const [productList, setProductList] = useState<Product[]>([]);
+import { Product } from "../types/Product";
 
 export const Products = () => {
+  const [productList, setProductList] = useState<Product[]>([]);
+
   return (
     <div className="bg-white p-8 rounded-md w-full">
       <div className=" flex items-center justify-between pb-6">
