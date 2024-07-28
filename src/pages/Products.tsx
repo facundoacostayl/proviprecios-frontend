@@ -1,3 +1,8 @@
+import { useState } from "react";
+import { ProductService } from "../services/Products";
+
+const [productList, setProductList] = useState<Product[]>([]);
+
 export const Products = () => {
   return (
     <div className="bg-white p-8 rounded-md w-full">
