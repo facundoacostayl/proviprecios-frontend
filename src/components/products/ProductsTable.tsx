@@ -35,7 +35,76 @@ export const ProductsTable = ({ data }: ProductsTableProps) => {
                 <div className="flex items-center">
                   <div className="ml-3">
                     <p className="text-gray-600 font-semibold whitespace-no-wrap">
-                      Vinardo del bueno
+                      Picante Kutbill
+                    </p>
+                  </div>
+                </div>
+              </td>
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <p className="text-red-700 font-bold whitespace-no-wrap">
+                  $15400
+                </p>
+              </td>
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <input
+                  className="w-16 px-2 border"
+                  title="costPrice"
+                  placeholder="22000"
+                />
+              </td>
+            </tr>
+            <tr key={1}>
+              <td className="px-2 py-2 border-b border-gray-200 bg-white text-sm">
+                <div className="flex items-center">
+                  <div className="ml-3">
+                    <p className="text-gray-600 font-semibold whitespace-no-wrap">
+                      Salsa Caribbean
+                    </p>
+                  </div>
+                </div>
+              </td>
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <p className="text-red-700 font-bold whitespace-no-wrap">
+                  $15400
+                </p>
+              </td>
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <input
+                  className="w-16 px-2 border"
+                  title="costPrice"
+                  placeholder="22000"
+                />
+              </td>
+            </tr>
+            <tr key={1}>
+              <td className="px-2 py-2 border-b border-gray-200 bg-white text-sm">
+                <div className="flex items-center">
+                  <div className="ml-3">
+                    <p className="text-gray-600 font-semibold whitespace-no-wrap">
+                      Salsa Jalapeños
+                    </p>
+                  </div>
+                </div>
+              </td>
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <p className="text-red-700 font-bold whitespace-no-wrap">
+                  $15400
+                </p>
+              </td>
+              <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                <input
+                  className="w-16 px-2 border"
+                  title="costPrice"
+                  placeholder="22000"
+                />
+              </td>
+            </tr>
+            <tr key={1}>
+              <td className="px-2 py-2 border-b border-gray-200 bg-white text-sm">
+                <div className="flex items-center">
+                  <div className="ml-3">
+                    <p className="text-gray-600 font-semibold whitespace-no-wrap">
+                      Picante Habanero
                     </p>
                   </div>
                 </div>
@@ -80,20 +149,6 @@ export const ProductsTable = ({ data }: ProductsTableProps) => {
             ))}
           </tbody>
         </table>
-        <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
-          <span className="text-xs xs:text-sm text-gray-900">
-            Showing 1 to 4 of 50 Entries
-          </span>
-          <div className="inline-flex mt-2 xs:mt-0">
-            <button className="text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-l">
-              Prev
-            </button>
-            &nbsp; &nbsp;
-            <button className="text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-r">
-              Next
-            </button>
-          </div>
-        </div>
       </div>
     </div>
   );
