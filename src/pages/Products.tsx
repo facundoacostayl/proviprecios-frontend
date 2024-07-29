@@ -7,12 +7,14 @@ export const Products = () => {
   const { brandId } = useParams();
 
   const { data } = useQuery("products", () =>
-    productService.findProductsByBrandId(brandId!)
+    brandId
+      ? productService.findProductsByBrandId(brandId!)
+      : productService.findProducts()
   );
 
   return (
     <div className="bg-white p-8 rounded-md w-full">
-      <div className=" flex items-center justify-between pb-6">
+      <div className="flex items-center justify-between pb-6">
         <div>
           <h2 className="text-gray-600 font-semibold">Productos</h2>
         </div>
