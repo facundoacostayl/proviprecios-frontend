@@ -45,11 +45,7 @@ export const Products = () => {
       <div>
         <ProductsTable productsData={data!} brandId={brandId!}></ProductsTable>
       </div>
-      <div className="flex items-center mb-5">
-        <button className="mx-auto text-sm text-indigo-50 transition duration-150 hover:bg-gray-700 bg-gray-600 font-semibold py-2 px-4 rounded">
-          Actualizar
-        </button>
-      </div>
+
       <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
         <span className="text-xs xs:text-sm text-gray-900">
           Showing 1 to 4 of 50 Entries
