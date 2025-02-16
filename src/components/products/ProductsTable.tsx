@@ -1,49 +1,76 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Product } from "../../types/Product";
 import brandService from "../../services/Brands";
 import productService from "../../services/Products";
 import { useQuery } from "react-query";
 //import UpdateProductRequest from "../../models/products/UpdateProductRequest";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import UpdateProductRequest from "../../models/products/UpdateProductRequest";
+import { showToast } from "../../utils/toast";
 
 interface ProductsTableProps {
   productsData: Product[];
   brandId: string;
+  refetchProducts: () => void;
 }
 
 export const ProductsTable = ({
   productsData,
   brandId,
+  refetchProducts,
 }: ProductsTableProps) => {
-  const [productsToUpdate, setProductsToUpdate] = useState({});
+  const [productsToUpdate, setProductsToUpdate] = useState<any>({});
   const { data } = useQuery("brand", () =>
     brandService.findBrandById(parseInt(brandId!))
   );
 
+  useEffect(() => {
+    console.log(productsToUpdate);
+  }, [productsToUpdate]);
+
   const handleProductsToUpdate = (e: ChangeEvent<HTMLInputElement>) => {
     const currentProductId = e.currentTarget.id;
     const currentProductNewCostPrice = e.currentTarget.value;
-    setProductsToUpdate({
-      ...productsToUpdate,
+    setProductsToUpdate((prevState: any) => ({
+      ...prevState,
       [currentProductId]: currentProductNewCostPrice,
+    }));
+  };
+
+  const clearInputs = () => {
+    setProductsToUpdate({});
+
+    const inputs = document.querySelectorAll('input[title="costPrice"]');
+    inputs.forEach((input) => {
+      (input as HTMLInputElement).value = ""; // Reset the input value
     });
   };
 
-  const submitProductsToUpdate = () => {
+  const submitProductsToUpdate = async () => {
     const productsArr: UpdateProductRequest[] = [];
     Object.values(productsToUpdate).map((product, i) => {
       productsArr.push({
         id: Object.keys(productsToUpdate)[i] as string,
-        newCostPrice: product as number,
+        newCostPrice: parseInt(product as string),
       });
     });
 
-    productService.updateProducts(productsArr);
+    const updateResponse = await productService.updateProducts(productsArr);
+    if (updateResponse) {
+      showToast.success("Precios actualizados correctamente", {
+        onOpen: () => {
+          refetchProducts();
+        },
+      });
+    } else {
+      showToast.error("No hubo aumentos en los precios");
+    }
+    clearInputs();
   };
 
   return (
     <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-      <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
+      <div className="w-full inline-block shadow rounded-lg overflow-hidden">
         <div className="py-2 px-2 bg-gray-800">
           <p className="text-semibold text-xl text-white">{data?.name}</p>
         </div>
@@ -82,7 +109,7 @@ export const ProductsTable = ({
                   <input
                     onChange={(e) => handleProductsToUpdate(e)}
                     id={id}
-                    //value={0}
+                    value={productsToUpdate[id] || ""}
                     className="w-16 px-2 border"
                     title="costPrice"
                     placeholder={costPrice.toString()}

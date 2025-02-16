@@ -6,15 +6,15 @@ import { useQuery } from "react-query";
 export const Products = () => {
   const { brandId } = useParams();
 
-  const { data } = useQuery("products", () =>
+  const { data, refetch } = useQuery("products", () =>
     brandId
       ? productService.findProductsByBrandId(brandId!)
       : productService.findProducts()
   );
 
   return (
-    <div className="bg-white p-8 rounded-md w-full">
-      <div className="flex items-center justify-between pb-6">
+    <div className="flex flex-col items-center justify-center bg-white p-8 rounded-md w-full">
+      <div className="w-full max-w-[1000px] flex items-center justify-between pb-6">
         <div>
           <h2 className="text-gray-600 font-semibold">Productos</h2>
         </div>
@@ -42,8 +42,12 @@ export const Products = () => {
           </div>
         </div>
       </div>
-      <div>
-        <ProductsTable productsData={data!} brandId={brandId!}></ProductsTable>
+      <div className="w-full max-w-[1000px]">
+        <ProductsTable
+          productsData={data!}
+          brandId={brandId!}
+          refetchProducts={refetch}
+        ></ProductsTable>
       </div>
 
       <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">

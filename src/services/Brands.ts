@@ -3,11 +3,17 @@ import { Brand } from "../types/Brand";
 
 class BrandService {
   async findBrands(): Promise<Brand[]> {
-    return (await axios.get("http://localhost:5000/api/brands")).data;
+    return (
+      await axios.get("https://edendesk.proviamoalmacengourmet.com/api/brands")
+    ).data;
   }
 
   async findBrandById(id: Brand["id"]): Promise<Brand> {
-    return (await axios.get(`http://localhost:5000/api/brands/${id}`)).data;
+    return (
+      await axios.get(
+        `https://edendesk.proviamoalmacengourmet.com/api/brands/${id}`
+      )
+    ).data;
   }
 }
 
